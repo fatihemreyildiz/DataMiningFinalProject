@@ -5,11 +5,12 @@
 - Fatih Emre Yıldız 180702004 [[fatihemreyildiz](https://www.github.com/fatihemreyildiz)]
 
 
-## Project Environment Setup
+## Project Development Environment Setup
 ```
 python -m venv .venv
 source .venv/bin/activate
 pip3 install -r requirements.txt
+jupyter-lab
 ```
 
 ## Project's Topic
