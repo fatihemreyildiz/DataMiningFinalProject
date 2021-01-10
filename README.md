@@ -8,8 +8,10 @@
 ## Project Environment Setup
 ```
 python -m venv venv
+source venv/bin/activate
 pip3 install -r requirements.txt
 ```
+
 ## Project's Topic
 Electronic Sports - League of Legends
 
