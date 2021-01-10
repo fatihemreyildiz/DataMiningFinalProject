@@ -4,6 +4,12 @@
 - Halil İbrahim Ceylan 390709073 [[haliliceylan](https://www.github.com/haliliceylan)]
 - Fatih Emre Yıldız 180702004 [[fatihemreyildiz](https://www.github.com/fatihemreyildiz)]
 
+
+## Project Environment Setup
+```
+python -m venv venv
+pip3 install -r requirements.txt
+```
 ## Project's Topic
 Electronic Sports - League of Legends
 
