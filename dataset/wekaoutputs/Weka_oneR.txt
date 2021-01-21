@@ -1,0 +1,87 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.rules.OneR -B 6
+Relation:     merged-weka.filters.unsupervised.attribute.Remove-R1-2,23,28-33,47-weka.filters.unsupervised.instance.RemoveWithValues-S1200.0-C1-Lfirst-last
+Instances:    139933
+Attributes:   41
+              gameDuraton
+              blueWins
+              blueFirstBlood
+              blueFirstTower
+              blueFirstBaron
+              blueFirstDragon
+              blueFirstInhibitor
+              blueDragonKills
+              blueBaronKills
+              blueTowerKills
+              blueInhibitorKills
+              blueWardPlaced
+              blueWardkills
+              blueKills
+              blueDeath
+              blueAssist
+              blueChampionDamageDealt
+              blueTotalGold
+              blueTotalMinionKills
+              blueTotalLevel
+              blueJungleMinionKills
+              blueKillingSpree
+              blueTotalHeal
+              blueObjectDamageDealt
+              redDragonKills
+              redBaronKills
+              redTowerKills
+              redInhibitorKills
+              redWardPlaced
+              redWardkills
+              redKills
+              redDeath
+              redAssist
+              redChampionDamageDealt
+              redTotalGold
+              redTotalMinionKills
+              redTotalLevel
+              redJungleMinionKills
+              redKillingSpree
+              redTotalHeal
+              redObjectDamageDealt
+Test mode:    split 70.0% train, remainder test
+
+=== Classifier model (full training set) ===
+
+blueInhibitorKills:
+	< 0.5	-> 0
+	>= 0.5	-> 1
+(121095/139933 instances correct)
+
+
+Time taken to build model: 2.02 seconds
+
+=== Evaluation on test split ===
+
+Time taken to test model on test split: 0.21 seconds
+
+=== Summary ===
+
+Correctly Classified Instances       36427               86.7723 %
+Incorrectly Classified Instances      5553               13.2277 %
+Kappa statistic                          0.7352
+Mean absolute error                      0.1323
+Root mean squared error                  0.3637
+Relative absolute error                 26.4633 %
+Root relative squared error             72.7522 %
+Total Number of Instances            41980     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.848    0.113    0.878      0.848    0.863      0.736    0.867     0.819     1
+                 0.887    0.152    0.858      0.887    0.872      0.736    0.867     0.819     0
+Weighted Avg.    0.868    0.133    0.868      0.868    0.868      0.736    0.867     0.819     
+
+=== Confusion Matrix ===
+
+     a     b   <-- classified as
+ 17466  3134 |     a = 1
+  2419 18961 |     b = 0
+
