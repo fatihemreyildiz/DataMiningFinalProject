@@ -1,0 +1,103 @@
+=== Run information ===
+
+Evaluator:    weka.attributeSelection.CorrelationAttributeEval 
+Search:       weka.attributeSelection.Ranker -T -1.7976931348623157E308 -N -1
+Relation:     merged-weka.filters.unsupervised.attribute.Remove-R1-2,23,28-33,47-weka.filters.unsupervised.instance.RemoveWithValues-S1200.0-C1-Lfirst-last
+Instances:    139933
+Attributes:   41
+              gameDuraton
+              blueWins
+              blueFirstBlood
+              blueFirstTower
+              blueFirstBaron
+              blueFirstDragon
+              blueFirstInhibitor
+              blueDragonKills
+              blueBaronKills
+              blueTowerKills
+              blueInhibitorKills
+              blueWardPlaced
+              blueWardkills
+              blueKills
+              blueDeath
+              blueAssist
+              blueChampionDamageDealt
+              blueTotalGold
+              blueTotalMinionKills
+              blueTotalLevel
+              blueJungleMinionKills
+              blueKillingSpree
+              blueTotalHeal
+              blueObjectDamageDealt
+              redDragonKills
+              redBaronKills
+              redTowerKills
+              redInhibitorKills
+              redWardPlaced
+              redWardkills
+              redKills
+              redDeath
+              redAssist
+              redChampionDamageDealt
+              redTotalGold
+              redTotalMinionKills
+              redTotalLevel
+              redJungleMinionKills
+              redKillingSpree
+              redTotalHeal
+              redObjectDamageDealt
+Evaluation mode:    evaluate on all training data
+
+
+
+=== Attribute Selection on all input data ===
+
+Search Method:
+	Attribute ranking.
+
+Attribute Evaluator (supervised, Class (nominal): 2 blueWins):
+	Correlation Ranking Filter
+Ranked attributes:
+ 0.7666   27 redTowerKills
+ 0.7637   10 blueTowerKills
+ 0.6988    7 blueFirstInhibitor
+ 0.6305   41 redObjectDamageDealt
+ 0.6151   11 blueInhibitorKills
+ 0.6071   28 redInhibitorKills
+ 0.6046   24 blueObjectDamageDealt
+ 0.5123   25 redDragonKills
+ 0.5026    8 blueDragonKills
+ 0.48     26 redBaronKills
+ 0.4721    5 blueFirstBaron
+ 0.455     9 blueBaronKills
+ 0.4538   31 redKills
+ 0.4519   15 blueDeath
+ 0.4498   14 blueKills
+ 0.4481   32 redDeath
+ 0.4076   39 redKillingSpree
+ 0.4023   22 blueKillingSpree
+ 0.3785   16 blueAssist
+ 0.3743   33 redAssist
+ 0.3343   35 redTotalGold
+ 0.3332    4 blueFirstTower
+ 0.3191   18 blueTotalGold
+ 0.2993   37 redTotalLevel
+ 0.2982   38 redJungleMinionKills
+ 0.2823   20 blueTotalLevel
+ 0.2649   21 blueJungleMinionKills
+ 0.2514   40 redTotalHeal
+ 0.2386   23 blueTotalHeal
+ 0.2154    6 blueFirstDragon
+ 0.1903   34 redChampionDamageDealt
+ 0.1838   17 blueChampionDamageDealt
+ 0.1358    3 blueFirstBlood
+ 0.1128   30 redWardkills
+ 0.0873   13 blueWardkills
+ 0.0825   36 redTotalMinionKills
+ 0.057    19 blueTotalMinionKills
+ 0.0564   29 redWardPlaced
+ 0.0323   12 blueWardPlaced
+ 0.0148    1 gameDuraton
+
+Selected attributes: 27,10,7,41,11,28,24,25,8,26,5,9,31,15,14,32,39,22,16,33,35,4,18,37,38,20,21,40,23,6,34,17,3,30,13,36,19,29,12,1 : 40
+
