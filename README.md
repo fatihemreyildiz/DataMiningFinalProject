@@ -15,6 +15,11 @@
 - `/dataset` -> It is a folder that has raw dataset and dataset for weka (.arff format)to analyze 
 - `/graphs` -> There are all the graphs that has been created by source codes and weka graphics.
 - `/wekaoutputs` -> It has extra files not included to the reports. There are informations that we needed during the development. 
+- `/final.py` -> Python Source Code 
+- `/final.ipynb` -> Jupyter Notebook Source Code 
+- `/Report.text` -> Latex Report File
+- `/Report.pdf` -> Rendered Latex Report File in PDF format
+- `/requirement.txt` -> All dependencies for development environment
 
 ## Language, version, and main file
 - `python >= 3.8.5` 
