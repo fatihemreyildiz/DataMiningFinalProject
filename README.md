@@ -1,5 +1,5 @@
-# DataMiningFinalProject
-
+# Team Samaritan - CENG 3521 Data Mining - Final Project
+ 
 ## Team & Roles
 ### Halil İbrahim Ceylan 390709073 [[haliliceylan](https://www.github.com/haliliceylan)]
 - Linear Classification (Logistic Regression, Perceptron, etc.)
