@@ -56,7 +56,7 @@ There are almost 200.000 games.
 We do not know about which loss function we are going to use. We will decide it later on while we are doing the project.
 
 ## Project's Subjects
-- [ ] Data Preprocessing, 
-- [ ] Linear Classification (Logistic Regression, Perceptron, etc.), 
-- [ ] Neural Network-based Classification, 
-- [ ] Clustering
+- [x] Data Preprocessing, 
+- [x] Linear Classification (Logistic Regression, Perceptron, etc.), 
+- [x] Neural Network-based Classification, 
+- [x] Clustering
