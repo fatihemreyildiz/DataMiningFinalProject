@@ -22,6 +22,8 @@
 - We used Virtual Environment for the environment, you can find environments setup codes below.
 
 
+
+**Hint You can use also final.ipynb with jupyter (included in environment) for comfortable environment**
 ## Project Development Environment Setup
 ```
 python -m venv .venv
