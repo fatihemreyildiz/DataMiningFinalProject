@@ -1,7 +1,35 @@
 \documentclass[a4paper]{article} 
-\input{head}
+\addtolength{\hoffset}{-2.25cm}
+\addtolength{\textwidth}{4.5cm}
+\addtolength{\voffset}{-3.25cm}
+\addtolength{\textheight}{5cm}
+\setlength{\parskip}{0pt}
+\setlength{\parindent}{0in}
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\usepackage{charter} % Use the Charter font
+\usepackage[utf8]{inputenc} % Use UTF-8 encoding
+\usepackage{float} % Improved interface for floating objects
+\usepackage{listings, style/lstlisting} % Environment for non-formatted code, !uses style file!
+\usepackage{style/avm} % Environment for f-structures, !uses style file!
+\usepackage{booktabs} % Enhances quality of tables
+\usepackage[ddmmyyyy]{datetime} % Uses YEAR-MONTH-DAY format for dates
+\renewcommand{\dateseparator}{-} % Sets dateseparator to '-'
+\usepackage{fancyhdr} % Headers and footers
+\pagestyle{fancy} % All pages have headers and footers
+\fancyhead{}\renewcommand{\headrulewidth}{0pt} % Blank out the default header
+\fancyfoot[L]{} % Custom footer text
+\fancyfoot[C]{} % Custom footer text
+\fancyfoot[R]{\thepage} % Custom footer text
+\newcommand{\note}[1]{\marginpar{\scriptsize \textcolor{red}{#1}}} % Enables comments in red on margin
+
+%----------------------------------------------------------------------------------------
+
 \usepackage{pdfpages}
-\usepackage{placeins}
+%\usepackage{placeins}
 \usepackage{incgraph,tikz}
 \begin{document}
 
@@ -87,7 +115,6 @@ In this study, with the data of the one of the popular game of today League of L
 
 
 \setcounter{section}{0}
-\centering
 \section{Introduction}
 
 \subsection{Description Of The Game}
@@ -260,12 +287,291 @@ In this case there is only one column that doesn't affect the end of the game wh
 Also we applied Standardization to our dataset. We used MinMaxScaler class from scikit learn. It transforms features by scaling each feature to a given range. We have scaled all the features between zero and one.
 
 
-\subsection{Result}
-
-Before Data preprocessing section we had 50 columns of dataset. We have examined every column. 
-After we have applied the data preprocessing techniques, we reduced features to 41 without losing any information. 
 \pagebreak
 
+
+\subsection{Weka Analysis}
+
+In this section, after get reviews from supervisor we decide to analyse our data with weka tool. In this tool there are many useful data mining subtool. We put the arff file into dataset folder, so you can get same analyse from weka with opening this file. (dataset/dataset\_for\_weka.arff)
+
+
+\subsubsection{Feature Importance}
+
+In weka tool, we used to Select Attributes, CorrelationAttributeEval method for get the feature importances. So there are the results.
+\medskip
+
+\includegraphics[width=0.7\linewidth]{graphs/weka_feature_selection.png}
+
+\subsubsection{Two most importance feature graph}
+
+\includegraphics[width=0.7\linewidth]{graphs/weka_feature_graph_most_important_2.png}
+
+\medskip
+
+\subsection{Result}
+
+
+
+Before Data preprocessing section we had 50 columns of dataset. We have examined every column. 
+After we have applied the data preprocessing techniques, we reduced features to 40 without losing any information. 
+\pagebreak
+
+
+
+\section{Linear Classification}
+
+In this section, we used Linear Classification to our dataset. Linear Classification helps us to classify the data by true/false or 1 and 0. as blueWins and redWins.
+
+
+\subsection{Perceptron}
+
+
+In data mining, Perceptron is the sensor for an algorithm to the supervised learning of binary classifiers.
+
+\medskip
+
+A binary classifier is a function that can decide whether an input represented by a vector of numbers belongs to a particular class.
+
+\subsubsection{Performance Analyse}
+
+We run like 5 times perceptron model with default parameters for get average values you can inspect below table for result.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|cccc|}
+\hline
+\multicolumn{4}{|c|}{\textbf{Linear Classification: Perceptron Results}} \\ \hline
+\#          & Training Time (ms)     & Error (cost)     & Score (\%)     \\ \hline
+1           & 341.68                 & 0.018723         & 0.9813         \\
+2           & 326.62                 & 0.018723         & 0.9813         \\
+3           & 336.92                 & 0.018723         & 0.9813         \\
+4           & 332.29                 & 0.018723         & 0.9813         \\
+5           & 323.27                 & 0.018723         & 0.9813         \\ \hline
+Average     & 332.16                 & 0.018723         & 0.9813         \\ \hline
+\end{tabular}
+\end{table}
+
+
+\subsubsection{Feature Weight Analyse}
+
+In this section, we inspect Perceptron instancee with coef\_ attribute (thanks to sckit-learn). with coef values we can get weights from first layer, so we applied this values with column features. there are some negative and positive values. Positive ones are most effective for class 1 (means blue win). Negative ones are most effective for class 0 (means red wins). According to this model, 3 Significant factor for class 0 are RedTotalLevel, redTotalGold, redTotalMinionKill. for class 1, BlueTotalLevel, blueTotalGold, blueTotalMinionKill. When we search on internet for these parameters, there are really effective for winnings. So each proffessional team is traning their players for improvements these features. You can inspect graph before.
+
+\bigskip
+
+
+\includegraphics[width=.9\linewidth]{graphs/perceptron_feature_importance_weights.pdf}
+
+\pagebreak
+
+\subsubsection{Feature Analyse with BruteForce}
+
+In this section, we analyze all values with randomly suffling, and these values are calculated to model-feature relation. when we suffle a feature, we look the model score, when its drop dramaticly. we decide to this feautre is important than others. These values very close to Feature Weight Analyse.
+
+\includegraphics[width=.9\linewidth]{graphs/perceptron_feature_importance.pdf}
+
+
+\subsubsection{Decision Boundary Graph}
+
+We draw graph to with two importance features (according to model) and we draw line from first layer. You can inspect result below.
+
+\medskip
+
+\includegraphics[width=.9\linewidth]{graphs/perceptron_decision_boundary.jpeg}
+
+
+\pagebreak
+
+\subsection{Logistic Regression}
+
+Logistic regression is a statistical method used to analyze a data set with one or more independent variables that determine a result. The result is measured by a binary variable. In logistic regression, the dependent variable contains data coded as binary or binary, i.e. only 1 or 0. The purpose of logistic regression is to find the most suitable model to describe the relationship between a two-way characteristic and a set of independent variables. Logistic regression generates the coefficients of a formula to estimate the probability of the existence of the characteristics of interest for the transformation.
+
+\subsubsection{Performance Analyse}
+
+We run like 5 times  for get average values you can inspect below table for result.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|cccc|}
+\hline
+\multicolumn{4}{|c|}{\textbf{Linear Classification : LogisticRegression Results}} \\ \hline
+\#             & Training Time (ms)       & Error (cost)       & Score (\%)       \\ \hline
+1              & 2048.80                  & 0.014602           & 0.9854           \\
+2              & 2056.79                  & 0.014602           & 0.9854           \\
+3              & 1871.26                  & 0.014602           & 0.9854           \\
+4              & 2162.40                  & 0.014602           & 0.9854           \\
+5              & 2640.21                  & 0.014602           & 0.9854           \\ \hline
+Average        & 2155.89                  & 0.014602           & 0.9854           \\ \hline
+\end{tabular}
+\end{table}
+
+\subsubsection{Feature Weight Analyse}
+
+In this section, we applied same technique which we used before. According to this model, 3 Significant factor for class 0 are RedTotalLevel, redTotalGold, redTotalMinionKill. for class 1, BlueTotalLevel, blueTotalGold, blueTotalMinionKill. Which like we mentioned before, These values are very important. You can inspect Perceptron Model Section and below graphs.
+
+\medskip
+
+\includegraphics[width=.9\linewidth]{graphs/logisticregression_feature_importance_weights.pdf}
+
+\pagebreak
+\subsubsection{Feature Analyse with BruteForce}
+
+In this section, we analyze all values with randomly suffling, and these values are calculated to model-feature relation. when we suffle a feature, we look the model score, when its drop dramaticly. we decide to this feautre is important than others. These values very close to Feature Weight Analyse except that we realized here two new paramters which do not mentioned above, blueTowerKill and redTowerkill these values are very familiar from weka Feature Analyse.
+
+\includegraphics[width=.9\linewidth]{graphs/logisticregression_feature_importance.pdf}
+
+\subsubsection{Decision Boundary Graph}
+
+We draw graph to with two importance features (according to model) and we draw line from first layer. You can inspect result below.
+
+\medskip
+
+\includegraphics[width=.9\linewidth]{graphs/logisticregression_decision_boundary.jpeg}
+
+\pagebreak
+
+\subsection{SGD Classifier}
+
+Stochastic Gradient Descent shorten as SGD is very effective function for the learning of linear classifiers under loss functions such as Support Vector Machines and Logistic Regression. While SGD has been around for a long time in the data mining space, it has recently became popular in the of large-scale learning.
+
+\subsubsection{Performance Analyse}
+
+We run like 5 times  for get average values you can inspect below table for result.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|cccc|}
+\hline
+\multicolumn{4}{|c|}{\textbf{Linear Classification : SGDClassifier Results}} \\ \hline
+\#           & Training Time (ms)      & Error (cost)      & Score (\%)      \\ \hline
+1            & 211.66                  & 0.017651          & 0.9823          \\
+2            & 203.04                  & 0.017342          & 0.9827          \\
+3            & 215.69                  & 0.017365          & 0.9826          \\
+4            & 218.15                  & 0.018128          & 0.9819          \\
+5            & 202.84                  & 0.017532          & 0.9825          \\ \hline
+Average      & 210.27                  & 0.017604          & 0.9824          \\ \hline
+\end{tabular}
+\end{table}
+
+\subsubsection{Feature Weight Analyse}
+
+In this section, we applied same technique which we used before. According to this model, 3 Significant factor for class 0 are RedTotalLevel, redTotalGold, redTotalMinionKill. for class 1, BlueTotalLevel, blueTotalGold, blueTotalMinionKill. Which like we mentioned before, These values are very important. You can inspect Perceptron Model Section and below graphs.
+
+\medskip
+
+\includegraphics[width=.9\linewidth]{graphs/sgdclassifier_feature_importance_weights.pdf}
+
+\pagebreak
+
+\subsubsection{Feature Analyse with BruteForce}
+
+In this section, we analyze all values with randomly suffling, and these values are calculated to model-feature relation. when we suffle a feature, we look the model score, when its drop dramaticly. we decide to this feautre is important than others. These values very close to Feature Weight Analyse except that we realized here two new paramters which do not mentioned above, blueTowerKill and redTowerkill these values are very familiar from weka Feature Analyse. (same like in LogisticRegression)
+
+\medskip
+
+\includegraphics[width=.9\linewidth]{graphs/sgdclassifier_feature_importance.pdf}
+
+\subsubsection{Decision Boundary Graph}
+
+We draw graph to with two importance features (according to model) and we draw line from first layer. You can inspect result below.
+
+\medskip
+
+\includegraphics[width=.9\linewidth]{graphs/sgdclassifier_decision_boundary.jpeg}
+
+
+\bigskip 
+
+\pagebreak
+
+\section{ Neural Network-based Classification}
+
+\subsection{MLPClassifier}
+
+There are many machine learning models available today. Neural Network is a machine learning model. It is a model inspired by the human brain and nervous system. We can also consider it as a Multi-layer Perceptron classifier. Neural Network is a structure in the form of layers. The first layer is called input and the last layer is called exit. The layers in the middle are called "Hidden Layers". Its layer contains a certain deemed 'Neuron'. These neurons are connected by "Synapse". Synapses contain a coefficient. These coefficients tell how important the information in the neuron to which it is attached is. Synapse Coefficients The value of a neuron is found by multiplying the inputs to that neuron by the coefficients and adding them together. This result found is put into an activation. According to the result from the function, it is decided that that neuron will not fire.
+
+
+\subsubsection{Performance Analyse}
+
+We run like 5 times  for get average values you can inspect below table for result. Compared to other models, it took longer than before. Also score's are higher than before.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|cccc|}
+\hline
+\multicolumn{4}{|c|}{\textbf{Neural Network-based Classification : MLPClassifier Results}} \\ \hline
+\#               & Training Time (ms)          & Error (cost)         & Score (\%)         \\ \hline
+1                & 78774.47                    & 0.008028             & 0.9920             \\
+2                & 50935.68                    & 0.008814             & 0.9912             \\
+3                & 100431.51                   & 0.008385             & 0.9916             \\
+4                & 62506.91                    & 0.009552             & 0.9904             \\
+5                & 93354.18                    & 0.008028             & 0.9920             \\ \hline
+Average          & 77200.55                    & 0.008561             & 0.9914             \\ \hline
+\end{tabular}
+\end{table}
+
+\subsubsection{Feature Weight Analyse}
+
+For this model manuel weight analyse is not possible, because there are a lot of layer and they are very complex like human brain. So we can not easily inspect this model so we do not have any data in this section.
+
+\subsubsection{Feature Analyse with BruteForce}
+
+for this model, this option is highly acceptable. like we mentioned before, in this technique we simply trying the brute-forcing. So this method we can figure out which features are very importants for our model.
+You can inspect graph below.
+
+
+
+\includegraphics[width=.9\linewidth]{graphs/mlpclassifier_feature_importance.pdf}
+
+\pagebreak
+
+Also in this section we do not have decision boundary because of complexity bu we simply show the data values on 2d space. You can inspect graph below.
+
+\includegraphics[width=.9\linewidth]{graphs/mlpclassifier_feature_graph.png} %TODO
+
+
+\section{Clustering}
+
+\subsection{KMeans}
+
+Clustering is the division into groups that show similar characteristics in a data set. There are many similarities within the same cluster and fewer similarities between clusters. There is Unsupervised Learning, meaning no prior information is given. K-Means and Hierarchical Segmentation are among the commonly used clustering algorithms. These algorithms are frequently used such as customer segmentation, market segmentation, and computer vision.
+\medskip
+
+\subsubsection{Performance Analyse}
+
+We run like 5 times  for get average values you can inspect below table for result. Compared to other models, it have worst accurracy, after some research we decide to our dataset not compatible for clustering. You can look feature importance and step by step clustering graphs below.
+
+
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|cccc|}
+\hline
+\multicolumn{4}{|c|}{\textbf{Clustering : KMeans Results}} \\ \hline
+\#       & Training Time (ms) & Error (cost) & Score (\%)  \\ \hline
+1        & 530.31             & 0.123487     & -57026.2996 \\
+2        & 518.64             & 0.876560     & -57026.2900 \\
+3        & 545.30             & 0.876346     & -57026.2258 \\
+4        & 518.68             & 0.876536     & -57026.2771 \\
+5        & 522.59             & 0.123464     & -57026.2112 \\ \hline
+Average  & 527.10             & 0.575279     & -57026.2607 \\ \hline
+\end{tabular}
+\end{table}
+
+\subsubsection{Feature Importance with BruteForce}
+\includegraphics[width=.9\linewidth]{graphs/kmeans_feature_importance.pdf}
+
+\medskip
+
+\subsubsection{Clustering Step by Step}
+\includegraphics[width=.9\linewidth]{graphs/kmeans_clustering_progress.jpeg}
+
+
+\pagebreak
+
+\textsc{\LARGE \bf Conclusion}\\
+\medskip
+
+As a conclusion, In this project we experience a lot of different technique and models as a team. We research this problem under 4 main topic and we use 8 different tool and model. Each model select almos same parameters and scores. We get to best result with mlpclassifier. Also clustering section we get worst results and we can not easily fix this, after some research we decide to our dataset not compatible with clustering. In this assigment we learned debug and know how to about models.
 %------------------------------------------------
 
 \end{document}
