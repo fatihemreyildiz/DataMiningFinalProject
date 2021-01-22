@@ -30,7 +30,7 @@
 ```bash
 python -m venv .venv
 source .venv/bin/activate
-pip3 install -r requirements.txt
+pip install -r requirement.txt
 ```
 **Run the Code Directly:**
 ```bash
