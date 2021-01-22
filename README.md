@@ -10,15 +10,14 @@
 - Clustering
 - Report
 
-## Team & Roles
+## Structure
 - / -> It is the Folder that has all the source code and report. 
 - /dataset -> It is a folder that has raw dataset and dataset for weka (.arff format)to analyze 
 - /graphs -> There are all the graphs that has been created by source codes and weka graphics.
 - /wekaoutputs -> It has editional files not included to the reports. There are informations that we needed during the development. 
 
 ## Language, version, and main file
-- python 
-- >= 3.8.5 
+- `python >= 3.8.5` 
 - final.py 
 - We used .venv for the environment, you can find environments setup codes down below.
 
