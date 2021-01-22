@@ -1,8 +1,25 @@
-# DataMiningFinalProject
+# Team Samaritan - CENG 3521 Data Mining - Final Project
+ 
+## Team & Roles
+### Halil İbrahim Ceylan 390709073 [[haliliceylan](https://www.github.com/haliliceylan)]
+- Linear Classification (Logistic Regression, Perceptron, etc.)
+- Neural Network-based Classification
+- Report
+### Fatih Emre Yıldız 180702004 [[fatihemreyildiz](https://www.github.com/fatihemreyildiz)]
+- Data Preprocessing
+- Clustering
+- Report
 
-## Project Members
-- Halil İbrahim Ceylan 390709073 [[haliliceylan](https://www.github.com/haliliceylan)]
-- Fatih Emre Yıldız 180702004 [[fatihemreyildiz](https://www.github.com/fatihemreyildiz)]
+## Structure
+- / -> It is the Folder that has all the source code and report. 
+- /dataset -> It is a folder that has raw dataset and dataset for weka (.arff format)to analyze 
+- /graphs -> There are all the graphs that has been created by source codes and weka graphics.
+- /wekaoutputs -> It has editional files not included to the reports. There are informations that we needed during the development. 
+
+## Language, version, and main file
+- `python >= 3.8.5` 
+- final.py 
+- We used .venv for the environment, you can find environments setup codes down below.
 
 
 ## Project Development Environment Setup
@@ -10,8 +27,11 @@
 python -m venv .venv
 source .venv/bin/activate
 pip3 install -r requirements.txt
-jupyter-lab
+#jupyter-lab
+python final.py
 ```
+
+
 
 ## Project's Topic
 Electronic Sports - League of Legends
