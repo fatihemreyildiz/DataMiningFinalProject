@@ -19,7 +19,7 @@
 ## Language, version, and main file
 - `python >= 3.8.5` 
 - final.py 
-- We used .venv for the environment, you can find environments setup codes down below.
+- We used Virtual Environment for the environment, you can find environments setup codes below.
 
 
 ## Project Development Environment Setup
