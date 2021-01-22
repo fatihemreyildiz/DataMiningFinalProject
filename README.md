@@ -23,16 +23,24 @@
 
 
 
-**Hint You can use also final.ipynb with jupyter (included in environment) for comfortable environment**
 ## Project Development Environment Setup
-```
+**Hint:** You can use also final.ipynb with jupyter (included in environment) for comfortable environment
+
+**Setup:**
+```bash
 python -m venv .venv
 source .venv/bin/activate
 pip3 install -r requirements.txt
-#jupyter-lab
+```
+**Run the Code Directly:**
+```bash
 python final.py
 ```
 
+**Run the Jupyer:**
+```bash
+jupyter-lab
+```
 
 
 ## Project's Topic
